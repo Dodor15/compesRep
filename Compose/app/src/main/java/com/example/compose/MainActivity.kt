@@ -94,7 +94,7 @@ fun Greeting() {
             contentAlignment = Alignment.Center,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Button(onClick = {  },
+            Button(onClick = {context.startActivity(Intent(context, Register::class.java))  },
                 Modifier
                     .size(300.dp, 60.dp)
                     , colors = ButtonDefaults.buttonColors(BtnCol)) {
