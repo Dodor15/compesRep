@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -106,10 +107,10 @@ fun PasswordTextField() {
 
 @Composable
 fun UperText(Name:String){
-    Box(Modifier.padding(8.dp), contentAlignment = Alignment.TopStart) {
-        Text(text = Name, fontSize = 30.sp, color = Color.White,)
+    Box(Modifier.padding(24.dp), contentAlignment = Alignment.TopStart) {
+        Text(text = Name, fontSize = 24.sp, color = Color.White, fontWeight = FontWeight.Bold)
     }
-    Box(Modifier.padding(8.dp), contentAlignment = Alignment.TopEnd){
+    Box(Modifier.padding(16.dp), contentAlignment = Alignment.TopEnd){
         IconButton(onClick = { /*TODO*/ }) {
             Image(
                 painter = painterResource(R.drawable.back_button),

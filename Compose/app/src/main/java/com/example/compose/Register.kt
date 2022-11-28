@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.compose.ui.theme.BackgroundCol200
 import com.example.compose.ui.theme.BtnCol
 import com.example.compose.ui.theme.ComposeTheme
 
@@ -26,7 +27,7 @@ class Register : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    color =  BackgroundCol200
                 ) {
                     Register("Android")
                 }
