@@ -44,6 +44,7 @@ class GeneralActivity : ComponentActivity() {
 
 @Composable
 fun General(name: String) {
+
     val context = LocalContext.current
     UperText("Список дел")
     Box(contentAlignment = Alignment.Center,
@@ -76,12 +77,12 @@ fun General(name: String) {
                     .size(300.dp, 60.dp)
                     .background(BtnCol), colors = ButtonDefaults.buttonColors(BtnCol)
             ) {
-                Text(text = "Войти", fontSize = 15.sp, color = Color.White)
+                Text(text = "Добавить задачу", fontSize = 15.sp, color = Color.White)
             }
             Spacer(modifier = Modifier.height(60.dp))
-            Box(modifier = Modifier.background(BtnCol) ){
+
                 MainMenu(1)
-            }
+
         }
     }
 }
@@ -115,73 +116,110 @@ fun Taskcard(Uper:String, Lower:String, Data:String, Time:String){
     }
 }
 @Composable
-fun MainMenu(menu:Int){
-    Box(modifier = Modifier
-        .clip(RoundedCornerShape(0.dp, 20.dp, 20.dp, 0.dp))
-        .size(360.dp, 100.dp)) {
+fun MainMenu(menu:Int) {
+    val context = LocalContext.current
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(30.dp, 30.dp, 0.dp, 0.dp))
+            .size(340.dp, 80.dp)
+            .background(BtnCol), contentAlignment = Alignment.Center
+    )
+    {
         Row(horizontalArrangement = Arrangement.Center) {
-            IconButton(onClick = { /*TODO*/ },) {
+            IconButton(onClick = { context.startActivity(Intent(context, GeneralActivity::class.java)) },) {
                 if (menu == 1) {
-                    Image(
-                        painter = painterResource(R.drawable.green_list),
-                        contentDescription = "sdff",
-                        modifier = Modifier.size(70.dp)
-                    )
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Image(
+                            painter = painterResource(R.drawable.list_green),
+                            contentDescription = "sdff",
+                            modifier = Modifier.size(48.dp)
+                        )
+                        Text("List", color = BackgroundCol200)
+                    }
                 } else {
-                    Image(
-                        painter = painterResource(R.drawable.red_list),
-                        contentDescription = "sdsad",
-                        modifier = Modifier.size(70.dp)
-                    )
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Image(
+                            painter = painterResource(R.drawable.calendar_red),
+                            contentDescription = "sdsad",
+                            modifier = Modifier.size(48.dp)
+                        )
+                        Text("List", color = Color.Red)
+                    }
                 }
             }
-            IconButton(onClick = { /*TODO*/ },) {
+            Spacer(modifier = Modifier.width(16.dp))
+            IconButton(onClick = { context.startActivity(Intent(context, AlarmActicity::class.java)) },) {
                 if (menu == 2) {
-                    Image(
-                        painter = painterResource(R.drawable.alarm_green),
-                        contentDescription = "sdff",
-                        modifier = Modifier.size(70.dp)
-                    )
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Image(
+                            painter = painterResource(R.drawable.alarm_green),
+                            contentDescription = "sdff",
+                            modifier = Modifier.size(48.dp)
+                        )
+                        Text("alarm", color = BackgroundCol200)
+                    }
                 } else {
-                    Image(
-                        painter = painterResource(R.drawable.alarm_red),
-                        contentDescription = "sdsad",
-                        modifier = Modifier.size(70.dp)
-                    )
-                }
-            }
-            IconButton(onClick = { /*TODO*/ },) {
-                if (menu == 3) {
-                    Image(
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Image(
+                            painter = painterResource(R.drawable.alarm_red),
+                            contentDescription = "sdsad",
+                            modifier = Modifier.size(48.dp)
+                        )
+                        Text("alarm",color = Color.Red)
+                    }
 
-                        painter = painterResource(R.drawable.calendar_green),
-                        contentDescription = "sdff",
-                        modifier = Modifier.size(70.dp)
-                    )
-                } else {
-                    Image(
-                        painter = painterResource(R.drawable.calendar_red),
-                        contentDescription = "sdsad",
-                        modifier = Modifier.size(70.dp)
-                    )
+
                 }
             }
-            IconButton(onClick = { /*TODO*/ },) {
-                if (menu == 4) {
-                    Image(
-                        painter = painterResource(R.drawable.setting_green),
-                        contentDescription = "sdff",
-                        modifier = Modifier.size(70.dp)
-                    )
+            Spacer(modifier = Modifier.width(16.dp))
+            IconButton(onClick = { context.startActivity(Intent(context, GeneralActivity::class.java)) },) {
+                if (menu == 3) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Image(
+                            painter = painterResource(R.drawable.calendar_green),
+                            contentDescription = "sdff",
+                            modifier = Modifier.size(48.dp)
+                        )
+                        Text("calendar", color = BackgroundCol200)
+                    }
                 } else {
-                    Image(
-                        painter = painterResource(R.drawable.setting_red),
-                        contentDescription = "sdsad",
-                        modifier = Modifier.size(70.dp)
-                    )
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Image(
+                            painter = painterResource(R.drawable.calendar_alarm),
+                            contentDescription = "sdsad",
+                            modifier = Modifier.size(48.dp, )
+                        )
+                        Text("calendar", color = Color.Red)
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.width(16.dp))
+            IconButton(onClick = { context.startActivity(Intent(context, GeneralActivity::class.java)) },) {
+                if (menu == 4) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Image(
+                            painter = painterResource(R.drawable.setting_green),
+                            contentDescription = "sdff",
+                            modifier = Modifier.size(48.dp)
+                        )
+                        Text("setting", color = BackgroundCol200)
+                    }
+
+                } else {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Image(
+                            painter = painterResource(R.drawable.setting_red),
+                            contentDescription = "sdsad",
+                            modifier = Modifier.size(48.dp)
+                        )
+                        Text("setting", color = Color.Red)
+                    }
+
                 }
             }
         }
-
     }
 }
+
+
+
