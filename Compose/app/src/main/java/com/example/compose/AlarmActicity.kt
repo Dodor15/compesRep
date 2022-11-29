@@ -84,7 +84,7 @@ fun Alarm(name: String) {
 fun AlarmSwitch(Time:String) {
     Box() {
         Box(Modifier.padding(24.dp), contentAlignment = Alignment.TopStart) {
-            Text(text = Time, fontSize = 24.sp, color = Color.White)
+            Text(text = Time, fontSize = 48.sp, color = Color.White)
         }
         Box(
             Modifier
