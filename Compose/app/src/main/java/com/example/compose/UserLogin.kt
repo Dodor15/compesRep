@@ -107,16 +107,18 @@ fun PasswordTextField() {
 
 @Composable
 fun UperText(Name:String){
-    Box(Modifier.padding(24.dp), contentAlignment = Alignment.TopStart) {
-        Text(text = Name, fontSize = 24.sp, color = Color.White, fontWeight = FontWeight.Bold)
-    }
-    Box(Modifier.padding(16.dp), contentAlignment = Alignment.TopEnd){
-        IconButton(onClick = { /*TODO*/ }) {
-            Image(
-                painter = painterResource(R.drawable.back_button),
-                contentDescription = "sd",
-                Modifier.size(50.dp, 50.dp)
-            )
+    Box() {
+        Box(Modifier.padding(24.dp), contentAlignment = Alignment.TopStart) {
+            Text(text = Name, fontSize = 24.sp, color = Color.White, fontWeight = FontWeight.Bold)
+        }
+        Box(Modifier.padding(16.dp).fillMaxWidth(), contentAlignment = Alignment.TopEnd) {
+            IconButton(onClick = { /*TODO*/ }) {
+                Image(
+                    painter = painterResource(R.drawable.back_button),
+                    contentDescription = "sd",
+                    Modifier.size(50.dp, 50.dp)
+                )
+            }
         }
     }
 }

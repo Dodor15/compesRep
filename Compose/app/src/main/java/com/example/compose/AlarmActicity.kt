@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -21,6 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -47,12 +50,14 @@ class AlarmActicity : ComponentActivity() {
 @Composable
 fun Alarm(name: String) {
     val context = LocalContext.current
-    UperText(Name = "Будильник")
     Column() {
-        SwitchCooler(switchPadding = 5.dp, buttonWidth = 100.dp, buttonHeight = 40.dp, value = false)
+        UperText(Name = "Будильник")
+        Spacer(modifier = Modifier.height(40.dp))
+        AlarmSwitch(Time = "9:00")
+        AlarmSwitch(Time = "7:30")
     }
-
-
+    
+   
     Box(contentAlignment = Alignment.BottomCenter, modifier = Modifier.height(100.dp)){
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
@@ -76,12 +81,28 @@ fun Alarm(name: String) {
 }
 
 @Composable
-fun AlarmSwitch(Time:String){
-    Text(text = Time)
-    SwitchCooler(switchPadding = 5.dp, buttonWidth = 80.dp, buttonHeight = 40.dp, value = false)
-
-
+fun AlarmSwitch(Time:String) {
+    Box() {
+        Box(Modifier.padding(24.dp), contentAlignment = Alignment.TopStart) {
+            Text(text = Time, fontSize = 24.sp, color = Color.White)
+        }
+        Box(
+            Modifier
+                .padding(16.dp)
+                .fillMaxWidth(), contentAlignment = Alignment.TopEnd) {
+            SwitchCooler(switchPadding = 8.dp, buttonWidth = 124.dp, buttonHeight = 64.dp, value =false )
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
 
 @Composable
 fun SwitchCooler(
