@@ -48,8 +48,9 @@ class AlarmActicity : ComponentActivity() {
 fun Alarm(name: String) {
     val context = LocalContext.current
     UperText(Name = "Будильник")
-
-        AlarmSwitch("9:00")
+    Column() {
+        SwitchCooler(switchPadding = 5.dp, buttonWidth = 100.dp, buttonHeight = 40.dp, value = false)
+    }
 
 
     Box(contentAlignment = Alignment.BottomCenter, modifier = Modifier.height(100.dp)){
@@ -76,13 +77,9 @@ fun Alarm(name: String) {
 
 @Composable
 fun AlarmSwitch(Time:String){
-Row() {
-
-
     Text(text = Time)
-
     SwitchCooler(switchPadding = 5.dp, buttonWidth = 80.dp, buttonHeight = 40.dp, value = false)
-}
+
 
 }
 
@@ -128,21 +125,25 @@ fun SwitchCooler(
             indication = null
         ) {
             switchClicker = !switchClicker
+        })
 
-        }
-    )
-    Row(modifier = Modifier.fillMaxSize().padding(switchPadding)) {
-        Box(
+    {
+        Row(
             modifier = Modifier
+                .fillMaxSize()
+                .padding(switchPadding))
+        {
+            Box(modifier = Modifier
                 .fillMaxHeight()
                 .width(animateSize)
-                .background(Color.Transparent)
-        )
-        Box(modifier = Modifier
-            .size(switchSize)
-            .clip(CircleShape)
-            .background(Color.White)
-        )
+                .background(Color.Transparent))
+
+            Box(modifier = Modifier
+                .size(switchSize)
+                .clip(CircleShape)
+                .background(Color.White)
+            )
+        }
     }
 
 
