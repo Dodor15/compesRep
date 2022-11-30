@@ -5,4 +5,9 @@
     <string name="title_activity_general">GeneralActivity</string>
     <string name="title_activity_alarm_acticity">AlarmActicity</string>
     <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_edit_task">EditTaskActivity</string>
+    <string name="title_activity_add_tasck">AddTasckActivity</string>
+    <string name="title_activity_create_alarm">CreateAlarmActivity</string>
+    <string name="title_activity_edit_alarm">EditAlarm</string>
 </resources>

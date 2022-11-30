@@ -71,7 +71,7 @@ fun General(name: String) {
 
             Button(
                 onClick = {
-                    context.startActivity(Intent(context, GeneralActivity::class.java))
+                    context.startActivity(Intent(context, AddTasckActivity::class.java))
                 },
                 Modifier
                     .size(300.dp, 60.dp)
@@ -97,10 +97,11 @@ fun DefaultPreview4() {
 
 @Composable
 fun Taskcard(Uper:String, Lower:String, Data:String, Time:String){
+    val context = LocalContext.current
     Card(shape = Shapes.large,
         modifier = Modifier
             .size(330.dp, 90.dp)
-            .clickable { },
+            .clickable { context.startActivity(Intent(context, EditTaskActivity::class.java))},
         elevation = 10.dp,
         backgroundColor = TaskCol){
         Column(horizontalAlignment = Alignment.Start, modifier = Modifier.padding(16.dp, 12.dp, 0.dp, 0.dp)) {
@@ -172,7 +173,7 @@ fun MainMenu(menu:Int) {
                 }
             }
             Spacer(modifier = Modifier.width(16.dp))
-            IconButton(onClick = { context.startActivity(Intent(context, GeneralActivity::class.java)) },) {
+            IconButton(onClick = { context.startActivity(Intent(context, CalendarActivity::class.java)) },) {
                 if (menu == 3) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Image(
@@ -194,7 +195,7 @@ fun MainMenu(menu:Int) {
                 }
             }
             Spacer(modifier = Modifier.width(16.dp))
-            IconButton(onClick = { context.startActivity(Intent(context, GeneralActivity::class.java)) },) {
+            IconButton(onClick = { context.startActivity(Intent(context, SettingActivity::class.java)) },) {
                 if (menu == 4) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Image(

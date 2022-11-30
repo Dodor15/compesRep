@@ -64,7 +64,7 @@ fun Alarm(name: String) {
 
             Button(
                 onClick = {
-                    context.startActivity(Intent(context, GeneralActivity::class.java))
+                    context.startActivity(Intent(context, CreateAlarmActivity::class.java))
                 },
                 Modifier
                     .size(300.dp, 60.dp)
@@ -82,9 +82,17 @@ fun Alarm(name: String) {
 
 @Composable
 fun AlarmSwitch(Time:String) {
+    val context = LocalContext.current
     Box() {
         Box(Modifier.padding(24.dp), contentAlignment = Alignment.TopStart) {
-            Text(text = Time, fontSize = 48.sp, color = Color.White)
+            TextButton(onClick = { context.startActivity(Intent(context, EditAlarm::class.java)) }) {
+                Text(
+                    text = Time,
+                    fontSize = 48.sp,
+                    color = Color.White,
+                )
+            }
+
         }
         Box(
             Modifier

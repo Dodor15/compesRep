@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -14,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -60,18 +62,21 @@ fun User() {
             .fillMaxWidth()
             .fillMaxHeight()
             ){
-        Column() {
+        Column(Modifier.padding(16.dp)) {
             SimpleFilledTextFieldSample("Имя пользователя")
             Spacer(modifier = Modifier.height(10.dp))
             PasswordTextField()
             Spacer(modifier = Modifier.height(45.dp))
-            Button(onClick = {context.startActivity(Intent(context, GeneralActivity::class.java))
-            },
-                Modifier
-                    .size(300.dp, 60.dp)
-                    .background(BtnCol), colors = ButtonDefaults.buttonColors(BtnCol)){
-                Text(text = "Войти", fontSize = 15.sp, color = Color.White)
+            Box(modifier = Modifier.padding(40.dp), contentAlignment = Alignment.BottomCenter){
+                Button(onClick = {context.startActivity(Intent(context, GeneralActivity::class.java))
+                },
+                    Modifier
+                        .size(300.dp, 60.dp)
+                        .background(BtnCol), colors = ButtonDefaults.buttonColors(BtnCol)){
+                    Text(text = "Войти", fontSize = 15.sp, color = Color.White)
+                }
             }
+
         }
 
     }
@@ -88,7 +93,12 @@ fun SimpleFilledTextFieldSample(Name: String) {
     TextField(
         value = text,
         onValueChange = { text = it },
-        label = { Text(Name) }
+        label = { Text(Name) },
+        modifier = Modifier
+            .size(350.dp, 40.dp)
+            .background(Color.Transparent)
+            .clip(shape = RoundedCornerShape(15.dp)),
+        colors = TextFieldDefaults.textFieldColors(backgroundColor = Color.White),
     )
 }
 
@@ -101,7 +111,12 @@ fun PasswordTextField() {
         onValueChange = { password = it },
         label = { Text("Enter password") },
         visualTransformation = PasswordVisualTransformation(),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        modifier = Modifier
+            .size(350.dp, 40.dp)
+            .background(Color.Transparent)
+            .clip(shape = RoundedCornerShape(15.dp)),
+        colors = TextFieldDefaults.textFieldColors(backgroundColor = Color.White),
     )
 }
 
@@ -111,7 +126,10 @@ fun UperText(Name:String){
         Box(Modifier.padding(24.dp), contentAlignment = Alignment.TopStart) {
             Text(text = Name, fontSize = 24.sp, color = Color.White, fontWeight = FontWeight.Bold)
         }
-        Box(Modifier.padding(16.dp).fillMaxWidth(), contentAlignment = Alignment.TopEnd) {
+        Box(
+            Modifier
+                .padding(16.dp)
+                .fillMaxWidth(), contentAlignment = Alignment.TopEnd) {
             IconButton(onClick = { /*TODO*/ }) {
                 Image(
                     painter = painterResource(R.drawable.back_button),

@@ -19,7 +19,7 @@ import com.example.compose.ui.theme.BackgroundCol200
 import com.example.compose.ui.theme.BtnCol
 import com.example.compose.ui.theme.ComposeTheme
 
-class Register : ComponentActivity() {
+class AddTasckActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -29,7 +29,7 @@ class Register : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color =  BackgroundCol200
                 ) {
-                    Register("Android")
+                    AddTasck("Android")
                 }
             }
         }
@@ -37,30 +37,27 @@ class Register : ComponentActivity() {
 }
 
 @Composable
-fun Register(name: String) {
+fun AddTasck(name: String) {
     val context = LocalContext.current
-    UperText("Регистрация")
-    Column() {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-        ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                SimpleFilledTextFieldSample("Имя пользователя")
-                Spacer(modifier = Modifier.height(10.dp))
-                SimpleFilledTextFieldSample("Адрес електронной почты")
-                Spacer(modifier = Modifier.height(10.dp))
-                PasswordTextField()
-                Spacer(modifier = Modifier.height(45.dp))
-                Button(onClick = {context.startActivity(Intent(context, GeneralActivity::class.java))
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        UperText(Name = "Добавить задачу")
+        SimpleFilledTextFieldSample(Name = "Заголовок задачи")
+        DoubleText()
+        BigEditText()
+    }
+    Box(modifier = Modifier.fillMaxWidth().padding(0.dp,0.dp,0.dp,40.dp), contentAlignment = Alignment.BottomCenter) {
+        Column() {
+
+
+            Button(
+                onClick = {
+                    context.startActivity(Intent(context, GeneralActivity::class.java))
                 },
-                    Modifier
-                        .size(300.dp, 60.dp)
-                        .background(BtnCol), colors = ButtonDefaults.buttonColors(BtnCol)){
-                    Text(text = "Войти", fontSize = 15.sp, color = Color.White)
-                }
+                Modifier
+                    .size(300.dp, 60.dp)
+                    .background(BtnCol), colors = ButtonDefaults.buttonColors(BtnCol)
+            ) {
+                Text(text = "Добавить задачу", fontSize = 15.sp, color = Color.White)
             }
         }
     }
@@ -68,8 +65,8 @@ fun Register(name: String) {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview3() {
+fun DefaultPreview9() {
     ComposeTheme {
-        Register("Android")
+        AddTasck("Android")
     }
 }
